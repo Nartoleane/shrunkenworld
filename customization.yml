@@ -5,7 +5,39 @@
 # See http://terra.polydev.org/config/development/meta-configuration.html for further
 # explanation of how this works.
 
-global-scale: 1
+continental-offset: 0.4
+# Controls the land / ocean ratio.
+# - A value of 0 results in equal land and ocean
+# - A value of 1 results in 100% land
+# - A value of -1 results in 100% ocean
+# - Any number in between these values can be used for controlling the
+#   exact ratio you want.
+#
+# Dividing your desired land percentage by 50 then subtracting 1 will give
+# you the equivalent continental-offset, i.e. land% / 50 - 1 = offset
+#
+# Default: 0.15
+
+continental-spread: 0.2
+# Controls how much variation there is in the continental value from
+# the continental-offset.
+#
+# The range of the continental value is equal to:
+#   [continental-offset - continental-spread, continental-offset + continental-spread]
+#
+# For example, with offset of 0 and spread of 1, the continental value would vary
+# between -1 and 1.
+#
+# Default: 1
+
+continental-scale: 1.1
+# Controls the scale of land / coastal / oceanic distribution. Increasing
+# this produces larger landmasses and larger oceans, and vice-versa when
+# decreasing it. This does not control the ratio of land / ocean, for that
+# you should change continental-offset instead.
+# Default: 2
+
+global-scale: 0.22
 # Modifies the scale of all biome distribution, you can use this parameter 
 # to if you want just about every biome to be larger or smaller.
 # By doubling the scale, you double the length & width of everything,
@@ -54,38 +86,6 @@ terrain-ocean-depth: 100
 # that describes if the position is land / coastal / ocean. A continental value of
 # 1 means 100% inland, 0 means the coast, and -1 means 100% ocean.
 # These options are primarily used in the math/samplers/continents.yml config file.
-
-continental-offset: 0.15
-# Controls the land / ocean ratio.
-# - A value of 0 results in equal land and ocean
-# - A value of 1 results in 100% land
-# - A value of -1 results in 100% ocean
-# - Any number in between these values can be used for controlling the
-#   exact ratio you want.
-#
-# Dividing your desired land percentage by 50 then subtracting 1 will give
-# you the equivalent continental-offset, i.e. land% / 50 - 1 = offset
-#
-# Default: 0.15
-
-continental-spread: 1
-# Controls how much variation there is in the continental value from
-# the continental-offset.
-#
-# The range of the continental value is equal to:
-#   [continental-offset - continental-spread, continental-offset + continental-spread]
-#
-# For example, with offset of 0 and spread of 1, the continental value would vary
-# between -1 and 1.
-#
-# Default: 1
-
-continental-scale: 2
-# Controls the scale of land / coastal / oceanic distribution. Increasing
-# this produces larger landmasses and larger oceans, and vice-versa when
-# decreasing it. This does not control the ratio of land / ocean, for that
-# you should change continental-offset instead.
-# Default: 2
 
 continental-coast-width: 15
 # Determines the width of costal biomes in blocks.
